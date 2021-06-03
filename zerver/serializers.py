@@ -8,7 +8,8 @@ class BankSerializer(serializers.ModelSerializer):
         fields = ('id', 'name')
 
 class BankDetailSerializer(serializers.ModelSerializer):
+    bank = BankSerializer(read_only=True, required=False)
 
     class Meta:
         model = BankDetail
-        fields = ('ifsc', 'bank_id', 'branch', 'address', 'city', 'district', 'state')
+        fields = '__all__'

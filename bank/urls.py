@@ -14,12 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from rest_framework.urlpatterns import format_suffix_patterns
-from zerver import views
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('bank/', views.bankList.as_view()),
-    path('bankdetail/', views.bankdetailList.as_view()),
+    path('', include('zerver.urls')),
 ]
