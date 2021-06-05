@@ -1,4 +1,5 @@
 from rest_framework.response import Response
+from django.shortcuts import render
 from .models import BankDetail, Bank
 from .serializers import BankSerializer, BankDetailSerializer
 from rest_framework.decorators import api_view
@@ -20,3 +21,6 @@ def branch(request):
 @api_view(['GET'])
 def bankdetails(request, ifsc):
     return Response({'bank': BankDetailSerializer(BankDetail.objects.get(ifsc=ifsc)).data, }, status=status.HTTP_200_OK)
+
+def index(request):
+    return render(request, 'index/index.html')
