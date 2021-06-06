@@ -1,4 +1,10 @@
-body {
-    padding: 0;
-    margin: 0;
+.App {
+  text-align: center;
+  font-size: 2rem;
 }
+
+.tracking-table {
+    display: flex;
+    flex-direction: column;
+    margin-top: 75px;
+  }
