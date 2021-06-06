@@ -21,6 +21,3 @@ def branch(request):
 @api_view(['GET'])
 def bankdetails(request, ifsc):
     return Response({'bank': BankDetailSerializer(BankDetail.objects.get(ifsc=ifsc)).data, }, status=status.HTTP_200_OK)
-
-def index(request):
-    return render(request, 'index/index.html')
