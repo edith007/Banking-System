@@ -20,6 +20,8 @@ from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'search', views.search_details),
+    url(r'^', views.homepage, name="home"),
     url(r'^api/branches/$', views.branch),
     url(r'^api/branches/(?P<pk>[0-9]+)$', views.bankdetail),
 ]

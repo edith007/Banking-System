@@ -1,8 +1,10 @@
+from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
 
 from rest_framework.pagination import LimitOffsetPagination
+from django.core.paginator import Paginator
 from .models import Bank, BankDetail
 from django.db.models import Q
 from .serializers import *
@@ -39,3 +41,15 @@ def bankdetail(request, pk):
     elif request.method == 'DELETE':
         bankdetail.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+def homepage(request):
+    data = BankDetail.objects.all().order_by('ifsc')[:1000]
+    paginator = Paginator(data, 5)
+
+    return render(request, "index/detail.html", {"details": data})
+
+def search_details(request):
+    if request.method == "POST":
+        searched = request.POST['city']
+        detail = BankDetail.objects.filter(city__icontains=searched)
+        return render(request, "index/detail.html", {"details": detail})

@@ -1,0 +1,35 @@
+{% extends "index/base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+      <div class="col-md-12">
+          <h4>Bank Detail</h4>
+        <table id="bootstrapdatatable" class="table table-striped table-bordered" width="100%">
+              <thead class="thead-dark">
+                  <tr>
+                      <th>IFSC</th>
+                      <th>BANK ID</th>
+                      <th>ADDRESS</th>
+                      <th>CITY</th>
+                      <th>BRANCH</th>
+                      <th>STATE</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for i in details %}
+                      <tr>
+                          <td>{{i.ifsc}}</td>
+                          <td>{{i.bank_id}}</td>
+                          <td>{{i.address}}</td>
+                          <td>{{i.city}}</td>
+                          <td>{{i.branch}}</td>
+                          <td>{{i.state}}</td>
+                      </tr>
+                  {% endfor%}
+              </tbody>
+        </table>
+      </div>
+  </div>
+</div>
+{% endblock %}
